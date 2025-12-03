@@ -1,0 +1,114 @@
+@use "variables" as *;
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px $spacing-md;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: $spacing-xs;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid rgba(128, 128, 128, 0.2);
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--color-bg-white);
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: 0 6px 18px rgba(128, 128, 128, 0.1);
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(128, 128, 128, 0.2);
+  }
+
+  h3 {
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  p {
+    margin: $spacing-xs 0 $spacing-sm 0;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: $spacing-sm;
+    margin-top: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Category Tags */
+.category-tag {
+  background: rgba(11, 116, 255, 0.1);
+  color: var(--color-primary);
+  padding: 4px $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .category-tag {
+    background: rgba(61, 142, 255, 0.2);
+  }
+}
+
+/* Share Buttons */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &.twitter {
+    background: var(--color-twitter);
+    color: #fff;
+
+    &:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.facebook {
+    background: var(--color-facebook);
+    color: #fff;
+
+    &:hover {
+      background: #0d5dbf;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .share-btn.twitter {
+    color: #000;
+    
+    &:hover {
+      background: #e7e9ea;
+    }
+  }
+}

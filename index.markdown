@@ -28,21 +28,23 @@ layout: home
 	<h2>Selected Projects</h2>
 	<div class="projects-grid">
 		<article class="project-card">
+			<h3>sir-time</h3>
+			<p>集中力を維持し、効率的なタスク管理を支援するポモドーロタイマーアプリ。統計機能やカスタマイズオプション付き。</p>
+			<a href="https://u1e2k.github.io/sir-time/" target="_blank" rel="noopener">デモを試す →</a>
+			<a href="https://github.com/u1e2k/sir-time" target="_blank" rel="noopener">GitHub →</a>
+		</article>
+
+		<article class="project-card">
+			<h3>plamo-mixer</h3>
+			<p>プラモデル塗装用の塗料混合計算ツール。比率入力で必要量を自動計算し、レシピ保存も可能です。</p>
+			<a href="https://plamo-mixer.streamlit.app/" target="_blank" rel="noopener">デモを試す →</a>
+			<a href="https://github.com/u1e2k/plamo-mixer" target="_blank" rel="noopener">GitHub →</a>
+		</article>
+
+		<article class="project-card">
 			<h3>Welcome to Jekyll</h3>
 			<p>このサイトのベースとなる Jekyll のセットアップ例です。サンプル記事を参考にして下さい。</p>
 			<a href="/jekyll/update/2025/10/31/welcome-to-jekyll.html">記事を読む →</a>
-		</article>
-
-		<article class="project-card">
-			<h3>Project B</h3>
-			<p>ここにはその他のプロジェクトやワークサンプルの概要を掲載します。</p>
-			<a href="#">詳細を見る →</a>
-		</article>
-
-		<article class="project-card">
-			<h3>Project C</h3>
-			<p>デザイン、実装、デプロイまでの流れを短く紹介します。</p>
-			<a href="#">詳細を見る →</a>
 		</article>
 	</div>
 </section>
@@ -72,7 +74,7 @@ layout: home
 </section>
 
 <footer class="site-footer">
-	<small>© u1e2k — Updated 2025-11-18</small>
+	<small>© u1e2k — Updated 2025-12-03</small>
 </footer>
 
 </div>

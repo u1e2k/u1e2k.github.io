@@ -36,7 +36,27 @@ bundle exec jekyll serve
 ## 編集について
 - 新しい記事は `_posts/` に Jekyll の命名規則（`YYYY-MM-DD-title.markdown`）で追加します。
 - ページのコンテンツは `index.markdown` や `about.markdown` を編集してください。
-- スタイル調整は `css/main.css` を編集します。
+- スタイル調整は `css/main.scss` と `_sass/` 内の SCSS ファイルを編集します。
+
+### CSS/SCSS 構成（2025-12-03 更新）
+スタイルシートを保守性向上のため SASS/SCSS に移行しました:
+
+```
+_sass/
+  _variables.scss  # 色、サイズ、ブレークポイントの定義
+  _base.scss       # リセット、基本スタイル
+  _layout.scss     # レイアウト（ヒーロー、プロジェクト、フッター）
+  _components.scss # コンポーネント（ボタン、カード、タグ）
+  _blog.scss       # ブログ記事関連スタイル
+  _responsive.scss # レスポンシブ対応
+css/
+  main.scss        # 上記をすべて import するエントリーポイント
+```
+
+スタイル変更時は:
+- 色やサイズの変更 → `_sass/_variables.scss` を編集
+- 各セクションのスタイル → 対応する `_sass/*.scss` を編集
+- 新しいコンポーネント → `_sass/` に新規ファイル作成し `css/main.scss` で import
 
 ## デプロイ
 このリポジトリは GitHub Pages 用に構成されています。`main` ブランチにプッシュすると自動的に公開されます（リポジトリの GitHub Pages 設定を確認してください）。
