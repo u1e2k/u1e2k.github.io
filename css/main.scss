@@ -1,10 +1,10 @@
 ---
 ---
 
-@use "variables" as *;
-@use "base";
-@use "layout";
-@use "components";
-@use "blog";
-@use "responsive";
-@use "animations";
+@import "variables";
+@import "base";
+@import "layout";
+@import "components";
+@import "blog";
+@import "responsive";
+@import "animations";
