@@ -2,6 +2,7 @@
 title:  "ポモドーロタイマーアプリ「sir-time」を公開しました!"
 date:   2025-12-03 10:00:00 +0900
 categories: [tools, productivity]
+slug: sir-time-release
 ---
 
 この度、**集中力を維持し、効率的なタスク管理を支援する**ポモドーロタイマーアプリ「**sir-time**」を開発し、GitHubで公開しました。
