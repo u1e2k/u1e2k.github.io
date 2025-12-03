@@ -1,0 +1,20 @@
+{
+  "name": "u1e2k-portfolio",
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.18",
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "sass": "^1.81.0"
+  }
+}
