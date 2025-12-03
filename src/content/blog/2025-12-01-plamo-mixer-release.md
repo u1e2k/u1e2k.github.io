@@ -2,7 +2,7 @@
 title:  "新しいWebアプリ「plamo-mixer」を公開しました!"
 date:   2025-12-01 11:44:47 +0900
 categories: [tools, plastic-model]
-slug: plamo-mixer-release
+customSlug: plamo-mixer-release
 ---
 
 この度、**プラモデルの塗装作業を効率化**するための新しいツール「**plamo-mixer**」を開発し、GitHubで公開しました。
