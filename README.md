@@ -1,80 +1,141 @@
 # u1e2k.github.io
 
-このリポジトリは GitHub Pages（Jekyll）でホスティングされている個人サイトのソースです。
+このリポジトリは GitHub Pages でホスティングされている個人サイトのソースです。
+
+**🎉 2025-12-03: JekyllからAstroに移行しました！**
 
 ## 概要
-- サイト生成: Jekyll
-- 配置先: GitHub Pages（`main` ブランチを利用）
 
-主なファイル・ディレクトリ:
+- **静的サイトジェネレーター**: Astro
+- **ランタイム**: Bun
+- **ホスティング**: GitHub Pages（GitHub Actions経由）
+- **スタイリング**: Sass/SCSS
 
-- `index.markdown` - サイトのトップページのソース（Markdown/Jekyll）
-- `about.markdown` - About ページのソース
-- `_posts/` - ブログ投稿（Jekyll の投稿形式）
-- `css/` と `img/` - サイトのスタイルシートと画像
-- `_config.yml` - Jekyll 設定
-- `_site/` - ビルド結果（自動生成。通常はコミット不要だが、このリポジトリでは既に存在します）
+## 主な機能
 
-## ローカルでの動作確認
-必要なもの:
+- ⚡️ 高速なビルドとホットリロード（Bun + Astro）
+- 📝 Markdownベースのブログ（Content Collections）
+- 🎨 レスポンシブデザイン
+- 🌙 ダークモード対応
+- ✨ アニメーション背景
 
-- Ruby（推奨: 3.x 系）
-- Bundler（`gem install bundler`）
+## プロジェクト構造
 
-セットアップと起動:
+```
+/
+├── public/          # 静的ファイル（画像、CSS等）
+│   ├── css/        # Sassファイル
+│   └── img/        # 画像ファイル
+├── src/
+│   ├── content/    # Markdownコンテンツ
+│   │   ├── config.ts
+│   │   └── blog/   # ブログ記事
+│   ├── layouts/    # レイアウトコンポーネント
+│   │   ├── Layout.astro
+│   │   └── Post.astro
+│   └── pages/      # ページファイル
+│       ├── index.astro
+│       ├── about.astro
+│       └── blog/
+│           └── [slug].astro
+├── .github/
+│   └── workflows/
+│       └── deploy.yml  # GitHub Actions デプロイ設定
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
+```
+
+## ローカル開発
+
+### 前提条件
+
+- [Bun](https://bun.sh/) がインストールされていること
+  ```bash
+  curl -fsSL https://bun.sh/install | bash
+  ```
+
+### セットアップと起動
 
 ```bash
-# 依存をインストール
-bundle install
+# 依存関係のインストール
+bun install
 
-# 開発用サーバを起動（デフォルト: http://127.0.0.1:4000）
-bundle exec jekyll serve
+# 開発サーバーの起動（http://localhost:4321）
+bun run dev
+
+# 本番ビルド
+bun run build
+
+# ビルド結果のプレビュー
+bun run preview
 ```
 
-ブラウザで `http://127.0.0.1:4000` にアクセスして確認してください。
+## ブログ記事の追加
 
-## 編集について
-- 新しい記事は `_posts/` に Jekyll の命名規則（`YYYY-MM-DD-title.markdown`）で追加します。
-- ページのコンテンツは `index.markdown` や `about.markdown` を編集してください。
-- スタイル調整は `css/main.scss` と `_sass/` 内の SCSS ファイルを編集します。
+1. `src/content/blog/` ディレクトリに新しいMarkdownファイルを作成
+2. Front Matter を追加:
 
-### CSS/SCSS 構成（2025-12-03 更新）
-スタイルシートを保守性向上のため SASS/SCSS に移行しました:
+```yaml
+---
+title: "記事のタイトル"
+date: 2025-12-03
+categories: [tools, web-dev]
+---
 
-```
-_sass/
-  _variables.scss  # 色、サイズ、ブレークポイントの定義
-  _base.scss       # リセット、基本スタイル
-  _layout.scss     # レイアウト（ヒーロー、プロジェクト、フッター）
-  _components.scss # コンポーネント（ボタン、カード、タグ）
-  _blog.scss       # ブログ記事関連スタイル
-  _responsive.scss # レスポンシブ対応
-  _animations.scss # 背景アニメーション
-css/
-  main.scss        # 上記をすべて import するエントリーポイント
+記事の内容をここに書く...
 ```
 
-スタイル変更時は:
-- 色やサイズの変更 → `_sass/_variables.scss` を編集
-- 各セクションのスタイル → 対応する `_sass/*.scss` を編集
-- 新しいコンポーネント → `_sass/` に新規ファイル作成し `css/main.scss` で import
+3. 開発サーバーで確認後、コミット・プッシュ
 
-#### GitHub Pages の Sass 対応について
-GitHub Pages は Jekyll 3.9.x を使用しており、古い Sass 実装（LibSass）を採用しています。そのため:
+## スタイルのカスタマイズ
 
-- **`@import` 構文を使用** - モダンな `@use` / `@forward` 構文は非対応
-- **ローカル環境での警告** - 最新の Dart Sass では `@import` が非推奨のため警告が出ますが、動作には問題ありません
-- **GitHub Pages では警告なし** - デプロイ先では古い Sass が使われるため警告は表示されません
+スタイルは `public/css/` ディレクトリのSassファイルで管理されています:
 
-もし最新の Sass 機能を使いたい場合は、GitHub Actions で Jekyll をビルドして `gh-pages` ブランチにデプロイする方法があります。
+- `_variables.scss` - 色、サイズ、ブレークポイントの定義
+- `_base.scss` - リセット、基本スタイル
+- `_layout.scss` - レイアウト（ヒーロー、プロジェクト、フッター）
+- `_components.scss` - コンポーネント（ボタン、カード、タグ）
+- `_blog.scss` - ブログ記事関連スタイル
+- `_responsive.scss` - レスポンシブ対応
+- `_animations.scss` - 背景アニメーション
 
 ## デプロイ
-このリポジトリは GitHub Pages 用に構成されています。`main` ブランチにプッシュすると自動的に公開されます（リポジトリの GitHub Pages 設定を確認してください）。
 
-## 備考
-- `_site/` はビルド成果物です。通常は `.gitignore` に含めることを推奨しますが、このリポジトリでは既に生成済みのファイルが含まれています。
-- 何か追加したい情報（連絡先、ライセンス、カスタムドメイン設定など）があれば教えてください。README を更新します。
+このリポジトリは GitHub Actions を使用して自動デプロイされます。
+
+1. `main` ブランチにプッシュ
+2. GitHub Actions が自動的にビルド
+3. GitHub Pages に自動デプロイ
+
+### GitHub Pages 設定
+
+リポジトリの **Settings** > **Pages** で:
+- **Source**: GitHub Actions を選択
+
+## 移行について
+
+Jekyll から Astro への移行の詳細は以下のドキュメントを参照してください:
+
+- [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md) - 移行手順の詳細
+- [SETUP.md](./SETUP.md) - セットアップガイド
+
+## トラブルシューティング
+
+詳細は [SETUP.md](./SETUP.md) を参照してください。
+
+### よくある問題
+
+- **Bunがインストールできない**: Node.js + npm/pnpm でも動作します
+- **ビルドエラー**: `rm -rf node_modules && bun install` で再インストール
+- **スタイルが反映されない**: `public/css/` のSassファイルを確認
+
+## 参考リンク
+
+- [Astro公式ドキュメント](https://docs.astro.build/)
+- [Bunドキュメント](https://bun.sh/docs)
+- [GitHub Pages + Astro デプロイガイド](https://docs.astro.build/en/guides/deploy/github/)
 
 ---
 
-作成日: 2025-11-18
+最終更新日: 2025-12-03

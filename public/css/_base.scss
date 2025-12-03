@@ -1,0 +1,64 @@
+@import "variables";
+
+/* Base reset */
+* {
+  box-sizing: border-box;
+}
+
+/* CSS Variables for theme colors */
+:root {
+  --color-primary: #{$color-primary};
+  --color-text: #{$color-text};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-bg-light: #{$color-bg-light};
+  --color-bg-white: #{$color-bg-white};
+  --color-bg-card: #{$color-bg-card};
+  --color-twitter: #{$color-twitter};
+  --color-facebook: #{$color-facebook};
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #{$color-primary-dark};
+    --color-text: #{$color-text-dark};
+    --color-text-secondary: #{$color-text-secondary-dark};
+    --color-text-muted: #{$color-text-muted-dark};
+    --color-bg-light: #{$color-bg-light-dark};
+    --color-bg-white: #{$color-bg-white-dark};
+    --color-bg-card: #{$color-bg-card-dark};
+    --color-twitter: #{$color-twitter-dark};
+    --color-facebook: #{$color-facebook-dark};
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", 'Noto Sans', "Helvetica Neue", Arial;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, var(--color-bg-light), var(--color-bg-white));
+  z-index: -2;
+  transition: background 0.3s ease;
+}
+
+.site-container {
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: $spacing-xl 20px;
+}

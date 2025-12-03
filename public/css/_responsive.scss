@@ -1,0 +1,35 @@
+@import "variables";
+
+/* Responsive tweaks */
+@media (max-width: $breakpoint-mobile) {
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .intro h1 {
+    font-size: 20px;
+  }
+
+  .post-title {
+    font-size: 24px;
+  }
+
+  .post-content {
+    font-size: 15px;
+    padding: $spacing-xl 0;
+
+    h2 {
+      font-size: 20px;
+      margin: $spacing-xl 0 $spacing-sm 0;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+  }
+
+  .post-share {
+    flex-wrap: wrap;
+  }
+}
