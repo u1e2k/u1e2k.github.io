@@ -49,6 +49,7 @@ _sass/
   _components.scss # コンポーネント（ボタン、カード、タグ）
   _blog.scss       # ブログ記事関連スタイル
   _responsive.scss # レスポンシブ対応
+  _animations.scss # 背景アニメーション
 css/
   main.scss        # 上記をすべて import するエントリーポイント
 ```
@@ -57,6 +58,15 @@ css/
 - 色やサイズの変更 → `_sass/_variables.scss` を編集
 - 各セクションのスタイル → 対応する `_sass/*.scss` を編集
 - 新しいコンポーネント → `_sass/` に新規ファイル作成し `css/main.scss` で import
+
+#### GitHub Pages の Sass 対応について
+GitHub Pages は Jekyll 3.9.x を使用しており、古い Sass 実装（LibSass）を採用しています。そのため:
+
+- **`@import` 構文を使用** - モダンな `@use` / `@forward` 構文は非対応
+- **ローカル環境での警告** - 最新の Dart Sass では `@import` が非推奨のため警告が出ますが、動作には問題ありません
+- **GitHub Pages では警告なし** - デプロイ先では古い Sass が使われるため警告は表示されません
+
+もし最新の Sass 機能を使いたい場合は、GitHub Actions で Jekyll をビルドして `gh-pages` ブランチにデプロイする方法があります。
 
 ## デプロイ
 このリポジトリは GitHub Pages 用に構成されています。`main` ブランチにプッシュすると自動的に公開されます（リポジトリの GitHub Pages 設定を確認してください）。
