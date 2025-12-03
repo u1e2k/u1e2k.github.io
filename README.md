@@ -29,14 +29,14 @@
 ├── src/
 │   ├── content/    # Markdownコンテンツ
 │   │   ├── config.ts
-│   │   └── blog/   # ブログ記事
+│   │   └── posts/  # ブログ記事
 │   ├── layouts/    # レイアウトコンポーネント
 │   │   ├── Layout.astro
 │   │   └── Post.astro
 │   └── pages/      # ページファイル
 │       ├── index.astro
 │       ├── about.astro
-│       └── blog/
+│       └── posts/
 │           └── [slug].astro
 ├── .github/
 │   └── workflows/
@@ -73,7 +73,7 @@ bun run preview
 
 ## ブログ記事の追加
 
-1. `src/content/blog/` ディレクトリに新しいMarkdownファイルを作成
+1. `src/content/posts/` ディレクトリに新しいMarkdownファイルを作成
 2. Front Matter を追加:
 
 ```yaml
